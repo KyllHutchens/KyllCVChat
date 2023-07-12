@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "omnicalendar-382700",
+  "private_key_id": "33549d94b1a956ad71d15c2ed56f3b678f4b7d6d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDhgrFxMo+QlLhG\nLbtsKmwgwWA0SM38IJHx1ukROevi52G8BCGPSfbhsuoy9ex3MT3Hn0y/sR1SYUCd\nbyz+z/MUzfdo9UpyqGtv5lp1vWXEn84HCt1cSk96HYcd7siNzAeVNpkez4lMFJSd\nr69h3Hw6fP5B1WjA0y0ziqHYoSE+2StfGhulTv2OLZPOHPcueFFrTEoQSgU3JYBW\nvpxxOosK/FNBCLvESjvf92RufJR2IKIgnArd8d3AgwKwfDk7hNi4Mav+gCCyOZ+m\nk+LhxDnXq0SZompzVrrcVGPp4zm5etcTP2vKq36f1bH1KfZYxG165eWyErqiYJmW\nfeni01UDAgMBAAECggEAG3H0dnpYzpfK9X+LV9ax4iqmsrZJm227VVt6cgZClxLh\n6if2jaHK0h0cM6eKZ9cuVaUlig7cKrJ7Uq29JCXax6VpfvSbYujsamn2iG3MfOmW\nAXVpC1pf4dTGJPZyog86vQYwDHfllcTLcYV4KsjStauQpiJ65TzOO3+bwumZSjSZ\ncY3ropvU3X6WlKf9C2t/xAkeKFLZ4RTq+yOd3HMFnKwsdh2SARHaZK7zifHUAsYW\nHzW4PnTodfOcAlY9LqRwDqwE9hZuGBvzBWcwMOb3g6g5/Y2NeuvnFAUQK9F0TI3f\nHz0tb7ROb0K5fnk7U5OVKafnnH8hDRr0ljbjm2RZgQKBgQD6kZRXh/5YnEq37GVY\nHFQ9HzzxUSEb1xqS4/zaAsxjsv6cHwigf59u/OKs47glAnqTXrAWbH4q5WzlkZ/3\n4aAbvKqbniAQNvWvoaSRELEgCf7S8qg+iHIWOpl0W3/a5LIj2to2wd7ujNTJuYnE\nKr2+q/ktKPZWi0E+lu1Z2nOFewKBgQDmZhCDInewtrfY8/5vdX5cNS3U+i9CmuG2\nwR3obmbl4Ika8WfWf1gCV5yKlBh3AdUEks820AjqvW1aTDyPQK2TB3cHEKroNyfZ\nYU0eM/VNVHyA33s6y4XUpnnWnwasLtc3znfNJHltzy3RV4a3zYP2iS1i48qPWT2Z\nnNp0OnIkGQKBgGPbfKjdk6mwr75YwZK5x4CMYHczg+Rad0avAWfI0bex7/I8E+4S\nrnFG6vdH0W0+bacphzeIiUeDI0DiJkRdcLddGwjlnZWYsZUK8FC3vD8ufJWJCy/Q\npNbjB6DtjiioF65eW7SS0sty6KJ0BMle1zuTwbwTpQiceqX89B5pBrzdAoGBANlc\nCM/uQITSnHdtGOkGK4PKF8cJkHSBsde8MP8KyMCuKCrm/FN8KAdtqB2Ewd/kNpbt\n+dd4RDFRLE04BxoOprJDJKPhsZsKDeoixaJs2ktuHVdnftZlE4ke1WsI9D6Uoi3f\n913tvzE9d7g7nrjghlKb79mPlZXPVzIIrH9idDRhAoGAIbztz3UWVMvaamgM4u7z\nSMaZpOaP/DrXwQ/3aYgjg3Ti8EWcgEmaV9a6Lq5tjruxx2FcqkvgmDbuPBPhTBO6\nyovAWnNdojnxEekxXGOSnBhetrJHrQgaDi5edSU/X8OTFdi0T+Rptlylk5oJo9OM\n4yE8lj7zAOFvzw/WATOrScw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "omni-calendar@omnicalendar-382700.iam.gserviceaccount.com",
+  "client_id": "115052880866688155318",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/omni-calendar%40omnicalendar-382700.iam.gserviceaccount.com"
+}

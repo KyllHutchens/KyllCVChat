@@ -1,0 +1,39 @@
+.row {
+  display: flex;
+}
+
+.sidebar {
+  flex: 0 0 150px; /* Adjust this to set the sidebar's width */
+  height: calc(100vh - 60px); /* Adjust this based on the header's height */
+  overflow: auto;
+  top: 56px;
+}
+
+.main {
+  flex-grow: 1;
+}
+.main-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbox-div{
+  height: 90%;   /* set height to 90% of parent */
+}
+
+.textarea {
+  flex-grow: 1;
+  resize: none;
+  height: 100%;
+  width: 100%;
+}
+
+.input-group {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+}
+.input-group input{
+  flex-grow: 1;
+}
