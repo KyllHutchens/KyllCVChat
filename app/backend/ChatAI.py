@@ -1,8 +1,11 @@
 import requests
 import openai
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 def cv_chat(user_input):
-    openai.api_key = "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"
+    openai.api_key = os.getenv("openai.api_key")
 
     my_info = "My name is Kyll Hutchens I live in Croydon, Melbourne and my phone number is 0408 992 374"\
     "I started working in February 2018 with the NSW State Government as an Analyst with a focus on Labour market economics." \
