@@ -1,15 +1,6 @@
 from flask import Flask, request, redirect, url_for, flash, session, jsonify, send_from_directory
-from google_auth_oauthlib.flow import Flow
 import os
-from datetime import datetime
-import config
 import secrets
-import psycopg2
-from googleapiclient.errors import HttpError
-from googleapiclient.discovery import build
-from google.oauth2.credentials import Credentials
-from google.auth.transport.requests import Request
-from get_events import get_events
 from ChatAI import cv_chat
 
 app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
