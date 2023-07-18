@@ -1,95 +1,34 @@
 import requests
 import openai
-from get_events import get_events
-from datetime import datetime
-import re
-import pytz
 
-def get_intent(prompt , credentials):
+def cv_chat(user_input):
     openai.api_key = "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"
-    url = "https://api.wit.ai/message"
-    params = {
-        'v': '20230710',
-        'q': prompt
-    }
-    headers = {
-        'Authorization: Bearer TAGT65U33RZ4YZXIBKFW6CREREBNRTU4'
-    }
 
-    response = requests.get(url, params=params, headers=headers)
+    my_info = "My name is Kyll Hutchens I live in Croydon, Melbourne and my phone number is 0408 992 374"\
+    "I started working in February 2018 with the NSW State Government as an Analyst with a focus on Labour market economics." \
+            "In April 2019 I moved to Melbourne to work for Deparmentment of Enegry, Environment and Climate Action. This takes me to the current day"\
+    "I have a Masters in Data Science completed in 2020 and a Bachelor of Commerce, Finance Economics major in 2017"\
+    "I have expertise in python programming and visualizations in both powerBI and Tableau"
 
-    # The 'response' object now contains the server's response to your request.
-    # You can access the response body (as JSON) using response.json():
-    data = response.json()
-    if data.get('intents'):  # check if intents exist
-        intent_type = data['intents'][0]['name']
+    conversation = [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user",
+             "content": "You have access to details about my life as Kyll Hutchens and my CV/Resume. When a user asks questions about me and my resume you will only answer using the info provided"},
+            {"role": "assistant",
+             "content": "Understood. I'll provide information and assistance based on the information provided about your life."},
+            {"role": "user", "content": my_info},
+            {"role": "assistant", "content": "Thankyou for providing information on your life and CV"},
+            {"role": "user",
+             "content": "Keep your responses concise and to the point. Do not provide any additional reasoning or ask follow-up questions."},
+            {"role": "user", "content": user_input},
+        ]
 
+    response = openai.ChatCompletion.create(
+    model = "gpt-3.5-turbo",
+    messages = conversation,
+    max_tokens = 1000,
+    )
+    print("A: ", response['choices'][0]['message']['content'])
 
-        if intent_type == "get_events":
-            retrieve_events(data, credentials, person)  # Pass 'data' as an argument
-    else:
-        print("No intent detected")
-    return data
-
-
-def retrieve_events(data, credentials):
-    print(data)
-    person = data['entities']['Person:Person'][0]['value']
-
-    start_datetime_str = None
-    end_datetime_str = None
-    if data['entities'].get('wit$datetime:datetime'):
-        if data['entities']['wit$datetime:datetime'][0]['values'][0].get('from'):
-            start_datetime_str = data['entities']['wit$datetime:datetime'][0]['values'][0]['from']['value']
-        if data['entities']['wit$datetime:datetime'][0]['values'][0].get('to'):
-            end_datetime_str = data['entities']['wit$datetime:datetime'][0]['values'][0]['to']['value']
-
-    start_date = datetime.fromisoformat(start_datetime_str).date() if start_datetime_str else None
-    end_date = datetime.fromisoformat(end_datetime_str).date() if end_datetime_str else None
-    start_time = datetime.fromisoformat(start_datetime_str).time() if start_datetime_str else None
-    end_time = datetime.fromisoformat(end_datetime_str).time() if end_datetime_str else None
-
-    events = get_events(start_date, end_date, credentials)
-    timezone = get_timezone(credentials)
-    formatted_events = []
-    for event in events:
-        start_date_local, start_time_local = convert_to_local_timezone(event["start"].split("T")[0], event["start_time"], timezone)
-        end_date_local, end_time_local = convert_to_local_timezone(event["end"].split("T")[0], event["end_time"], timezone)
-
-        event_dict = {
-            "all_day_event": str(event["all_day_event"]),
-            "end": end_date_local.isoformat(),
-            "end_time": end_time_local.isoformat(),
-            "start": start_date_local.isoformat(),
-            "start_time": start_time_local.isoformat(),
-            "summary": event["summary"],
-            "calendar_name": "John"  # You may need to modify this to get the actual calendar name
-        }
-        print(event_dict)
-        if person is None or event['calendar_name'] == person:
-            formatted_events.append(event_dict)
-    for event in formatted_events:
-        if event['all_day_event'] == 'True':
-            event['all_day_event_note'] = 'This is an all day event.'
-        else:
-            event['all_day_event_note'] = ''
-
-    if len(formatted_events) > 0:
-        print(f"Matching events for {person if person else 'you'} between {start_date} and {end_date}:")
-        for event in formatted_events:
-            print(event)
-    else:
-        print(f"No matching events found for {person if person else 'all staff'} between {start_date} and {end_date}.")
-
-    assistant_initial_message = f'I am trying to manage my calendar, which includes the following events:\n'
-    for event in formatted_events:
-        date = datetime.strptime(event['start'], "%Y-%m-%d").strftime("%d %b %Y")
-        assistant_initial_message += f"- {event['summary']} starts at {event['start_time']} and ends at {event['end_time']} on {date}. {event['all_day_event_note']}\n"
-    print(assistant_initial_message)
-
-    assistant_return_message = f'Sure, I can help you manage those events. Based on the details provided, you have the event(s): \n'
-    for event in formatted_events:
-        date = datetime.strptime(event['start'], "%Y-%m-%d").strftime("%d %b %Y")
-        assistant_return_message += f"- {event['summary']} starts at {event['start_time']} and ends at {event['end_time']} on {date}. {event['all_day_event_note']}\n"
-
-    return formatted_events, assistant_initial_message, assistant_return_message
+    # Return the message content
+    return response['choices'][0]['message']['content']
